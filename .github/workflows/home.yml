@@ -26,4 +26,6 @@ jobs:
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/shop:${GITHUB_SHA::7}
           docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/shop:${GITHUB_SHA::7} shop_api
           docker stop server 
-          docker run -d --rm --name server -p 8000:8000 -e SECRET_KEY="{{ secrets.DJANGO_SECRET_KEY }}" shop_api
+          docker run -d --rm --name server -p 8000:8000 \
+            -e DJANGO_SETTINGS_MODULE=shop_django.settings.prod
+            -e SECRET_KEY="{{ secrets.DJANGO_SECRET_KEY }}" shop_api
