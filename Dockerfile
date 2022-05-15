@@ -26,7 +26,7 @@ RUN poetry config virtualenvs.create false \
 # Creating folders, and files for a project:
 COPY . /code
 
-EXPOSE 80
+EXPOSE 8000
 CMD ["gunicorn", "shop_django.asgi:application", "--bind", "0.0.0.0:8000", "-k", "uvicorn.workers.UvicornWorker"]
 
 # Usage
