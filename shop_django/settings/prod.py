@@ -4,3 +4,5 @@ from .common import *
 # 허용 API를 127.0.0.1로 설정함.
 ALLOWED_HOSTS = ["127.0.0.1"]
 DEBUG = False
+
+STATIC_ROOT = "/var/www/staticfiles"
