@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ feature/CI_CD_설정 ]
+    branches: [ main ]
 
 jobs:
   build:
