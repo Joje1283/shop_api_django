@@ -33,4 +33,4 @@ jobs:
             -e DJANGO_SETTINGS_MODULE=shop_django.settings.prod \
             -e SECRET_KEY="{{ secrets.DJANGO_SECRET_KEY }}" shop_api
           cd ~/Projects/shop_api_django
-          /home/paul/.cache/pypoetry/virtualenvs/shop-django-M_czz2fv-py3.10/bin/python manage.py collectstatic --settings=shop_django.settings.prod
+          /home/paul/.cache/pypoetry/virtualenvs/shop-django-M_czz2fv-py3.10/bin/python manage.py collectstatic --settings=shop_django.settings.prod --no-input
