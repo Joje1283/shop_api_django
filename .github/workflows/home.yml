@@ -1,3 +1,6 @@
+# 정적 파일이 위치하는 서버에 backports-zoneinfo 패키지를 추가로 설치한다 -> poetry add --no-dev backports-zoneinfo
+# 미 설치시 collectstatic 명령이 안된다.
+
 name: Docker Image CI
 
 on:
