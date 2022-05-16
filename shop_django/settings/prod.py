@@ -5,4 +5,5 @@ from .common import *
 ALLOWED_HOSTS = ["127.0.0.1"]
 DEBUG = False
 
-# Todo: STATIC, MEDIA 서빙 설정
+STATIC_ROOT = "/var/www/staticfiles"
+STATIC_URL = "/static/"
