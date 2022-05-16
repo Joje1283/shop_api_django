@@ -32,3 +32,6 @@ jobs:
           docker run -d --rm --name server -p 8000:8000 \
             -e DJANGO_SETTINGS_MODULE=shop_django.settings.prod \
             -e SECRET_KEY="{{ secrets.DJANGO_SECRET_KEY }}" shop_api
+          cd ~/Projects/shop_api_django
+          poetry shell
+          python manage.py collectstatic --settings=shop_django.settings.prod
