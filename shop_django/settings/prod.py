@@ -4,7 +4,7 @@ from .common import *
 # 허용 API를 127.0.0.1로 설정함.
 ALLOWED_HOSTS = ["127.0.0.1"]
 CSRF_TRUSTED_ORIGINS = ["https://*.joje.link"]
-DEBUG = True
+DEBUG = False
 
 STATIC_ROOT = os.getenv("STATIC_ROOT")
 
