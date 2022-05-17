@@ -39,6 +39,4 @@ jobs:
             -e SECRET_KEY="{{ secrets.DJANGO_SECRET_KEY }}" shop_api
           cd ~/Projects/shop_api_django
           git pull
-          export STATIC_ROOT="{{ secrets.STATIC_ROOT }}"
-          /home/paul/.local/bin/poetry install
-          /home/paul/.cache/pypoetry/virtualenvs/shop-django-M_czz2fv-py3.10/bin/python manage.py collectstatic --settings=shop_django.settings.prod --no-input
+          /home/paul/.pyenv/shims/python manage.py collectstatic --settings=shop_django.settings.collectstatic --no-input
