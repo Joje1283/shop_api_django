@@ -38,5 +38,4 @@ jobs:
             -e STATIC_ROOT="{{ secrets.STATIC_ROOT }}" \
             -e SECRET_KEY="{{ secrets.DJANGO_SECRET_KEY }}" shop_api
           cd ~/Projects/shop_api_django
-          poetry shell
-          python manage.py collectstatic --settings=shop_django.settings.prod
+          /home/paul/.cache/pypoetry/virtualenvs/shop-django-M_czz2fv-py3.10/bin/python manage.py collectstatic --settings=shop_django.settings.prod --no-input
