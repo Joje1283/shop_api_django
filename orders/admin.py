@@ -7,12 +7,6 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ["member", "delivery", "order_date"]
 
 
-"""
-Delivery
-OrderItem
-"""
-
-
 @admin.register(Delivery)
 class DeliveryAdmin(admin.ModelAdmin):
     list_display = ["status", "city", "street", "zipcode"]
