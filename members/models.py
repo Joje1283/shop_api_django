@@ -12,4 +12,5 @@ class Address(models.Model):
 
 
 class Member(AbstractUser, Address):
-    pass
+    def __str__(self):
+        return self.username

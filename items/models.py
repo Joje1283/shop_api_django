@@ -5,6 +5,9 @@ class Category(models.Model):
     parent = models.ForeignKey("self", on_delete=models.DO_NOTHING, null=True, blank=True)
     name = models.CharField(max_length=16)
 
+    def __str__(self):
+        return self.name
+
 
 class Item(models.Model):
     name = models.CharField(max_length=32)
@@ -30,3 +33,6 @@ class Item(models.Model):
     # Movie
     director = models.CharField(max_length=16, blank=True)
     actor = models.CharField(max_length=32, blank=True)
+
+    def __str__(self):
+        return self.name
