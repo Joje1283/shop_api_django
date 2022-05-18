@@ -9,4 +9,4 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ["parent", "name"]
+    list_display = ["name", "parent"]

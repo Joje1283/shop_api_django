@@ -16,7 +16,7 @@ class Order(models.Model):
 
     def __str__(self):
         # status의 값이 아닌 display name을 반환
-        return [choice[1] for choice in self.Status.choices if choice[0] == self.status][0]
+        return f"주문 정보({self.member}님에 의해 {[choice[1] for choice in self.Status.choices if choice[0] == self.status][0]})"
 
 
 class Delivery(Address):
