@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
-    parent_id = models.ForeignKey("self", on_delete=models.DO_NOTHING)
+    parent = models.ForeignKey("self", on_delete=models.DO_NOTHING, null=True, blank=True)
     name = models.CharField(max_length=16)
 
 
@@ -20,13 +20,13 @@ class Item(models.Model):
     dtype = models.CharField(max_length=16, choices=Dtype.choices, default=Dtype.BOOK)
 
     # Book
-    artist = models.CharField(max_length=16)
-    etc = models.CharField(max_length=64)
+    artist = models.CharField(max_length=16, blank=True)
+    etc = models.CharField(max_length=64, blank=True)
 
     # Album
-    author = models.CharField(max_length=16)
-    isbn = models.CharField(max_length=32)
+    author = models.CharField(max_length=16, blank=True)
+    isbn = models.CharField(max_length=32, blank=True)
 
     # Movie
-    director = models.CharField(max_length=16)
-    actor = models.CharField(max_length=32)
+    director = models.CharField(max_length=16, blank=True)
+    actor = models.CharField(max_length=32, blank=True)

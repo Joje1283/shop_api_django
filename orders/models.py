@@ -4,8 +4,8 @@ from members.models import Address
 
 
 class Order(models.Model):
-    member_id = models.ForeignKey("members.Member", on_delete=models.CASCADE)
-    delivery_id = models.OneToOneField("orders.Delivery", on_delete=models.CASCADE)
+    member = models.ForeignKey("members.Member", on_delete=models.CASCADE)
+    delivery = models.OneToOneField("orders.Delivery", on_delete=models.CASCADE)
     order_date = models.DateTimeField(verbose_name="주문 시간", auto_now_add=True)
 
     class Status(models.TextChoices):
@@ -24,7 +24,7 @@ class Delivery(Address):
 
 
 class OrderItem(models.Model):
-    order_id = models.ForeignKey("orders.Order", on_delete=models.CASCADE)
-    item_id = models.ForeignKey("items.Item", on_delete=models.CASCADE)
+    order = models.ForeignKey("orders.Order", on_delete=models.CASCADE)
+    item = models.ForeignKey("items.Item", on_delete=models.CASCADE)
     order_price = models.IntegerField(verbose_name="구매 가격")
     count = models.IntegerField(verbose_name="구매 수량")
