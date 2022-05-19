@@ -15,7 +15,7 @@
 도메인 분석 -> 엔티티(모델) 구현 -> 도메인 개발(서비스)을 통해 먼저 백엔드를 탄탄히 하고 이후 웹 계층을 개발하는 순서의 맥락은 가능할 것 같다.
 
 # 리포지토리 계층은?
-아래는 레딧의 토론을 보고 정리한 내용이다.
+아래는 레딧의 토론을 보고 정리한 내용이다. ( [참고](https://www.reddit.com/r/django/comments/d0596f/comment/ez8tf4e/?utm_source=share&utm_medium=web2x&context=3)  )
 ## 정리
 - ORM은 Active Recore ORM과 Data Mapper ORM으로 나뉜다.
 - 일반적으로 JPA, SQLAlchemy같은 Data Mapper ORM은 Repository계층과 함께 사용되는 경우가 많다.
@@ -30,5 +30,3 @@
 Django ORM은 근본적으로 데이터베이스 엑세스 로직이 합쳐져 있다. 
 리포지토리를 나누었을 때 추상 계층을 통해 얻는 코드 안정성보다, 모델이 지원해주는 다양한 기능으로 인한 통제되지 않는 버그가 많을 수 있다.
 이에 본 프로젝트에서는 Repository를 별도로 구현하지 않았다. 대신 이후에 FastAPI + SQLAlchemy를 실습할 때 적용해 보려 한다.
-
-[참고](https://www.reddit.com/r/django/comments/d0596f/comment/ez8tf4e/?utm_source=share&utm_medium=web2x&context=3)
