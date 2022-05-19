@@ -12,4 +12,23 @@
 5. 웹 계층 개발
 
 [여러가지 이유](https://tech.junhabaek.net/django%EC%99%80-ddd%EB%8A%94-%ED%95%A8%EA%BB%98%ED%95%A0-%EC%88%98-%EC%97%86%EB%8A%94-%EC%A1%B4%EC%9E%AC%EC%9D%BC%EA%B9%8C-6602cf392c09)로 장고에서는 DDD 적용이 어렵다고 하지만 
-도메인 분석, 모델 및 구현을 통해 먼저 백엔드를 탄탄히 하고 웹 계층을 개발하는 순서의 맥락은 가능할 것 같다.
+도메인 분석 -> 엔티티(모델) 구현 -> 도메인 개발(서비스)을 통해 먼저 백엔드를 탄탄히 하고 이후 웹 계층을 개발하는 순서의 맥락은 가능할 것 같다.
+
+# 리포지토리 계층은?
+아래는 레딧의 토론을 보고 정리한 내용이다.
+## 정리
+- ORM은 Active Recore ORM과 Data Mapper ORM으로 나뉜다.
+- 일반적으로 JPA, SQLAlchemy같은 Data Mapper ORM은 Repository계층과 함께 사용되는 경우가 많다.
+- Django ORM과 같은 Active Record ORM은 Domain과 Database 스키마간의 긴밀한 결합을 가정하고 설계되었다.
+  - 데이터베이스의 세부사항을 도메인에 포함하고 있어서 많은 마법이 일어나고 있다. (이시점에서 모델을 단순한 객체로 보기에는 무리가 있다)
+  - 모델 필드가 dirty하면 누군가 필드 값을 변경할 때마다 데이터베이스에 적용되었는지 여부를 알기 힘들다.
+  - ORM의 특성에 대해 부단히 연구해야 하지만 빠른 개발을 하는데 유리하다.
+- SQLAlchemy와 같은 Data Mapper ORM은 도메인 모델에서 데이터 엑세스 로직을 분리한다.
+  - 이 때는 도메인 객체를 단순히 파이썬 객체로 취급할 수 있게 된다.
+  - 테스트 작성이 용이하나, 작성해야 하는 코드량이 많다.
+## 결론
+Django ORM은 근본적으로 데이터베이스 엑세스 로직이 합쳐져 있다. 
+리포지토리를 나누었을 때 추상 계층을 통해 얻는 코드 안정성보다, 모델이 지원해주는 다양한 기능으로 인한 통제되지 않는 버그가 많을 수 있다.
+이에 본 프로젝트에서는 Repository를 별도로 구현하지 않았다. 대신 이후에 FastAPI + SQLAlchemy를 실습할 때 적용해 보려 한다.
+
+[참고](https://www.reddit.com/r/django/comments/d0596f/comment/ez8tf4e/?utm_source=share&utm_medium=web2x&context=3)
