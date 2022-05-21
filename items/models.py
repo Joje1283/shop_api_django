@@ -1,5 +1,7 @@
 from django.db import models
 
+from items.exceptions import NotEnoughStockException
+
 
 class Category(models.Model):
     parent = models.ForeignKey("self", on_delete=models.DO_NOTHING, null=True, blank=True)
@@ -36,3 +38,13 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+    def add_stock(self, quantity: int) -> None:
+        self.stock_quantity += quantity
+        self.save()
+
+    def remove_stock(self, quantity: int) -> None:
+        rest_stock = self.stock_quantity - quantity
+        if rest_stock < 0:
+            raise NotEnoughStockException("need more stock")
+        self.stock_quantity = rest_stock
