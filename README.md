@@ -19,9 +19,9 @@ Spring Boot, FastAPI를 공부하며 장고에서도 DDD를 할수 있지 않을
 특히나 Service.py나 Repository.py를 따로 작성할까도 생각해보았지만 관두기로 했다.
 결국은 누구나 다 아는대로 비즈니스 로직은 Model에, Model 리팩토링은 Manager에 하면 될 것 같다.
 
-# 리포지토리 계층
+## 리포지토리 계층은?
 아래는 Repository+ORM vs ORM이라는 주제의 레딧의 토론을 보고 정리한 내용이다. ( [참고](https://www.reddit.com/r/django/comments/d0596f/comment/ez8tf4e/?utm_source=share&utm_medium=web2x&context=3)  )
-## 정리
+### 정리
 - ORM은 Active Recore ORM과 Data Mapper ORM으로 나뉜다.
 - 일반적으로 JPA, SQLAlchemy같은 Data Mapper ORM은 Repository계층과 함께 사용되는 경우가 많다.
 - Django ORM과 같은 Active Record ORM은 Domain과 Database 스키마간의 긴밀한 결합을 가정하고 설계되었다.
@@ -31,8 +31,8 @@ Spring Boot, FastAPI를 공부하며 장고에서도 DDD를 할수 있지 않을
 - SQLAlchemy와 같은 Data Mapper ORM은 도메인 모델에서 데이터 엑세스 로직을 분리한다.
   - 이 때는 도메인 객체를 단순히 파이썬 객체로 취급할 수 있게 된다.
   - 테스트 작성이 용이하나, 작성해야 하는 코드량이 많다.
-## 결론
+### 결론
 - Django ORM은 근본적으로 데이터베이스 엑세스 로직이 합쳐져 있다. 
 - 리포지토리를 나누었을 때 추상 계층을 통해 얻는 코드 안정성보다, 모델이 지원해주는 다양한 기능으로 인한 통제되지 않는 버그가 많을 수 있다.
-- 이에 본 프로젝트에서는 Repository를 별도로 구현하지 않았다. 대신 이후에 FastAPI + SQLAlchemy를 실습할 때 적용해 보려 한다.
+- 따라서 repository는 구현하지 않는다. 대신 이후에 FastAPI + SQLAlchemy를 실습할 때 적용해 보려 한다.
 PS. 비즈니스로직은 장고에서 추천하는대로 Fat Model 패턴으로 구현한다. (모델 리팩토링하기는 다음 [링크](https://www.softkraft.co/django-best-practises/) 을 참고)
