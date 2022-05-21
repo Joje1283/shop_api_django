@@ -1,0 +1,2 @@
+class MemberException(Exception):
+    pass
