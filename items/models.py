@@ -48,3 +48,4 @@ class Item(models.Model):
         if rest_stock < 0:
             raise NotEnoughStockException("need more stock")
         self.stock_quantity = rest_stock
+        self.save()
