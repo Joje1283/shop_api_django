@@ -3,7 +3,7 @@
 [JPA 활용편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-%ED%99%9C%EC%9A%A9-1#)을 공부하였다.
 [앞선 프로젝트](https://github.com/Joje1283/jpashop/pulls?q=is%3Apr+is%3Aclosed)처럼 장고에서도 개발을 진행해본다.
 
-# 계획
+# 1. 계획
 일반적으로 웹 앱 개발 과정은 다음과 같다.
 1. 요구사항 분석
 2. 도메인과 테이블 설계
@@ -19,7 +19,7 @@ Spring Boot, FastAPI를 공부하며 장고에서도 DDD를 할수 있지 않을
 특히나 Service.py나 Repository.py를 따로 작성할까도 생각해보았지만 관두기로 했다.
 결국은 누구나 다 아는대로 비즈니스 로직은 Model에, Model 리팩토링은 Manager에 하면 될 것 같다.
 
-## 리포지토리 계층은?
+## 1-1. 리포지토리 계층은?
 아래는 Repository+ORM vs ORM이라는 주제의 레딧의 토론을 보고 정리한 내용이다. ( [참고](https://www.reddit.com/r/django/comments/d0596f/comment/ez8tf4e/?utm_source=share&utm_medium=web2x&context=3)  )
 ### 정리
 - ORM은 Active Recore ORM과 Data Mapper ORM으로 나뉜다.
