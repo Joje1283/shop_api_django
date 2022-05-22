@@ -36,3 +36,7 @@ class Member(AbstractUser, Address):
         return self.username
 
     objects = MemberManager()
+
+    @property
+    def address(self):
+        return {"city": self.city, "street": self.street, "zipcode": self.zipcode}
