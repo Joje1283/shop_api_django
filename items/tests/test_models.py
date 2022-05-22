@@ -24,9 +24,10 @@ class TestItem(TestCase):
         # when
         current_stock_quantity = book.stock_quantity
         book.add_stock(add_stock_quantity)
+        result_stock_quantity = current_stock_quantity + add_stock_quantity
 
         # then
-        result_stock_quantity = current_stock_quantity + add_stock_quantity
+        book = Item.objects.first()
         self.assertEqual(book.stock_quantity, result_stock_quantity)
 
     def test_재고_삭제(self):
@@ -37,9 +38,10 @@ class TestItem(TestCase):
         # when
         current_stock_quantity = book.stock_quantity
         book.remove_stock(remove_stock_quantity)
+        result_stock_quantity = current_stock_quantity - remove_stock_quantity
 
         # then
-        result_stock_quantity = current_stock_quantity - remove_stock_quantity
+        book = Item.objects.first()
         self.assertEqual(book.stock_quantity, result_stock_quantity)
 
     def test_재고_삭제_예외(self):
