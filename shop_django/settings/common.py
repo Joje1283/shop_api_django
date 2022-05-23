@@ -71,7 +71,9 @@ TEMPLATES = [
         },
     },
 ]
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 WSGI_APPLICATION = 'shop_django.wsgi.application'
 
 
