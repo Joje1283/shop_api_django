@@ -21,6 +21,7 @@ class MemberManager(UserManager):
         self.validate_duplicate_member(username=username)
         member = self.create_user(username=username, **kwargs)
         member.set_password(password)
+        member.save()
         return member.pk
 
     def validate_duplicate_member(self, username: str) -> None:
