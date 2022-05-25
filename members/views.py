@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView
 
 from .forms import MemberForm
 from .models import Member
@@ -19,3 +19,6 @@ def member_create_view(request):
         'form': form,
     })
 
+
+class MemberListView(ListView):
+    model = Member
