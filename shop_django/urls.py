@@ -10,5 +10,6 @@ def root(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", root, name="root"),
-    path("members/", include("members.urls"))
+    path("members/", include("members.urls")),
+    path("items/", include("items.urls")),
 ]

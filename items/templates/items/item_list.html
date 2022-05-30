@@ -1,0 +1,30 @@
+{% extends 'members/layout.html' %}
+
+{% block content %}
+  <div class="container">
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>상품명</th>
+          <th>가격</th>
+          <th>재고수량</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in item_list %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.stock_quantity }}</td>
+            <td><a href="/items/{{ item.id }}/edit/" class="btn btn-primary">수정</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
