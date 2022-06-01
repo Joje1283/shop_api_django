@@ -24,9 +24,9 @@
           <tr>
             <td>{{ order.id }}</td>
             <td>{{ order.member }}</td>
-            <td>{{ order.orderitem_set.first.item }}</td>
-            <td>{{ order.orderitem_set.first.order_price }}</td>
-            <td>{{ order.orderitem_set.first.count }}</td>
+            <td>{{ order.orderitem_set.first_order_item.item }}</td>
+            <td>{{ order.orderitem_set.first_order_item.order_price }}</td>
+            <td>{{ order.orderitem_set.first_order_item.count }}</td>
             <td>{{ order.status_str }}</td>
             <td>{{ order.order_date }}</td>
             <td>

@@ -1,3 +1,4 @@
+from django.db.models import Prefetch
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
@@ -31,6 +32,7 @@ class OrderListView(ListView):
     model = Order
     template_name = "orders/order_list.html"
     form_class = SearchForm
+    queryset = Order.objects.all().select_related("member")
 
     def get_queryset(self):
         form = self.form_class(self.request.GET)

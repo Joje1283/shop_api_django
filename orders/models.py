@@ -51,6 +51,10 @@ class Order(models.Model):
     def status_str(self):
         return [choice[1] for choice in self.Status.choices if choice[0] == self.status][0]
 
+    @property
+    def first_order_item(self):
+        return self.orderitem_set.first()
+
     """
     비즈니스 로직
     """
