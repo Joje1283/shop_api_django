@@ -2,6 +2,10 @@ import sys
 
 from .common import *
 
+INSTALLED_APPS += ["debug_toolbar"]
+
+MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware",]
+
 DEBUG = True
 if 'test' in sys.argv:
     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
