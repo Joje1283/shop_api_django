@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, transaction
 
 from items.exceptions import NotEnoughStockException
 from members.models import Address, Member
@@ -6,6 +6,7 @@ from items.models import Item
 
 
 class OrderManager(models.Manager):
+    @transaction.atomic
     def order_create(self, member_id: int, item_id: int, count: int) -> int:
         """
         비즈니스 로직 (관심사의 분리는 제외하였다)
@@ -31,6 +32,9 @@ class Order(models.Model):
     delivery = models.OneToOneField("orders.Delivery", on_delete=models.CASCADE)
     order_date = models.DateTimeField(verbose_name="주문 시간", auto_now_add=True)
 
+    class Meta:
+        ordering = ["pk"]
+
     class Status(models.TextChoices):
         ORDER = 'O', '주문됨'
         CANCEL = 'C', '취소됨'
@@ -42,6 +46,10 @@ class Order(models.Model):
     def __str__(self):
         # status의 값이 아닌 display name을 반환
         return f"주문 정보({self.member}님에 의해 {[choice[1] for choice in self.Status.choices if choice[0] == self.status][0]})"
+
+    @property
+    def status_str(self):
+        return [choice[1] for choice in self.Status.choices if choice[0] == self.status][0]
 
     """
     비즈니스 로직
