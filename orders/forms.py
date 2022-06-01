@@ -18,3 +18,11 @@ class OrderForm(forms.Form):
                 cleaned_data[k] = v
         return cleaned_data
 
+
+class SearchForm(forms.Form):
+    member_name = forms.CharField()
+    status_choices = (
+        ("O", "주문됨"),
+        ("C", "취소됨"),
+    )
+    status = forms.ChoiceField(choices=status_choices)

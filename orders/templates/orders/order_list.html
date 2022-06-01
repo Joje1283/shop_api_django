@@ -3,6 +3,9 @@
 {% block content %}
   <div class="container">
     <div>
+      <div>
+        {% include '_get_form.html' with form_title='검색' submit_label='검색' form_method="GET" %}
+      </div>
       <table class="table table-striped">
         <thead>
         <tr>
