@@ -1,0 +1,53 @@
+{% extends 'members/layout.html' %}
+
+{% block content %}
+  <div class="container">
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>회원명</th>
+          <th>대표상품 이름</th>
+          <th>대표상품 주문가격</th>
+          <th>대표상품 주문수량</th>
+          <th>상태</th>
+          <th>일시</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in order_list %}
+          <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.member }}</td>
+            <td>{{ order.orderitem_set.first.item }}</td>
+            <td>{{ order.orderitem_set.first.order_price }}</td>
+            <td>{{ order.orderitem_set.first.count }}</td>
+            <td>{{ order.status_str }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>
+              {% if order.status == "O" %}
+              <a href="javascript:cancel({{ order.id }})" class="btn btn-danger">CANCEL</a>
+              {% endif %}
+{#              <a th:if="${item.status.name() == 'ORDER'}" href="#" th:href="'javascript:cancel('+${item.id}+')'"#}
+{#                 class="btn btn-danger">CANCEL</a>#}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+  <script>
+    function cancel(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/orders/" + id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+{% endblock %}
